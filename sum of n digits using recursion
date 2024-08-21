@@ -1,0 +1,21 @@
+import java.util.*;
+import java.io.*;
+
+public class main{ public static int sum(int i,int n,int s){
+       if(i == n){
+            s += i;
+            System.out.println(s);
+            return s;
+        }
+        
+        s += i;
+        return sum(i+1,n,s);
+         
+ }   
+    public static void main(String[] args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+         sum(1,n,0);
+    }        
+      
+}
