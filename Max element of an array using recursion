@@ -1,0 +1,27 @@
+import java.util.*;
+import java.io.*;
+
+public class main{
+    public static void main(String[] args)throws Exception {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int [] arr = new int[n];
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = scn.nextInt();
+        }
+        int max = maxsize(arr,0);
+        System.out.println(max);
+    }
+    public static int maxsize(int[] arr , int idx){
+        if(idx >= arr.length-1 ){
+            return arr[idx];
+        }
+        int smallArr = maxsize(arr , idx+1);
+        if(smallArr > arr[idx]){
+            return smallArr;
+        }else{
+            return arr[idx];
+        }
+        
+    }   
+}
