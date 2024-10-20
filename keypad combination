@@ -1,0 +1,49 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner scn = new Scanner(System.in);
+		String str = scn.next();
+	    ArrayList<String> ans = getKeyPadCombination(str);
+	    
+	    for(String str1 : ans){
+	        System.out.println(str1);
+	    }
+	}
+	
+    static String[] arr = {"", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
+public static ArrayList<String> getKeyPadCombination(String str) {
+    if (str.length() == 0) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("");
+        return list; // This should be the base case where you output the combinations.
+    }
+
+    int idx = (int) str.charAt(0) - '0'; // Get the digit.
+    String rstr = str.substring(1); // Remaining string.
+    
+    // Recursive call to process the next digit.
+    ArrayList<String> rList = getKeyPadCombination(rstr);
+    
+    
+    
+    String s = arr[idx]; // ghi -- Get corresponding characters for the digit.
+    
+    ArrayList<String> nlist = new ArrayList<>(); // New list for the current digit's combinations.
+    for (String last : rList) {
+        for (int j = 0; j < s.length(); j++) {
+            char ch = s.charAt(j);
+            nlist.add( ch + last); // Append character to each existing combination.
+        }
+    }
+
+   return nlist;
+
+ 
+}
+
+	
+}
