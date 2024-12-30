@@ -1,0 +1,48 @@
+import java.util.*;
+import java.io.*;
+
+public class main{
+    
+     
+    public static void main(String[] args){
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        
+        ArrayList<String> paths = startpaths(n);
+        System.out.println(paths);
+        
+    } 
+public static ArrayList<String> startpaths(int n){
+    
+    if(n == 0){
+        ArrayList<String> pbc = new ArrayList<>();
+        pbc.add(" ");
+        return pbc;
+    }else if(n < 0){
+        ArrayList<String> nbc = new ArrayList<>();
+        return nbc;
+    }
+    
+    ArrayList<String> path1 = startpaths(n-1);
+    ArrayList<String> path2 = startpaths(n-2);
+    ArrayList<String> path3 = startpaths(n-3);
+    
+    ArrayList<String>paths = new ArrayList<>();
+    
+    for(String path:path1){
+        paths.add(1 + path);
+    }
+    
+    for(String path :path2){
+        paths.add(2 + path);
+    }
+    
+    for(String path :path3){
+        paths.add(3 + path);
+    }
+    
+    return paths;
+
+
+}
+}
